@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Official</title>
+    <style>
+        :root{
+            --accent: #d6001c;
+            --dark: rgba(0,0,0,0.6);
+        }
+        *{box-sizing:border-box}
+        body { 
+          margin: 0; 
+          font-family: Arial, sans-serif;
+          color:#fff; 
+        }
+
+        /* navigation */
+        header{
+          position:fixed;
+          top:0;
+          left:0;
+          width:100%;
+          background:rgba(0,0,0,0.55);
+          backdrop-filter:blur(4px);
+          z-index:1000;
+        }
+        .nav { 
+          max-width:100px;
+          margin:0 auto;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          gap:28px;padding:14px; 
+        }
+        .nav a{ 
+          color:#fff;
+          text-decoration:none;
+          font-weight:700;
+          padding:8px 14px;
+          border-radius:8px;
+        }
+        .nav a:hover{ 
+          background:var(--dark); 
+        }
+
+        /* Sections */
+        main{padding-top:78px}
+        section { padding: 60px 20px; background-size: cover; background-position: center; min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; }
+       h1 { 
+            font-size: clamp(30px, 4vw, 46px); 
+            margin:0; 
+            text-shadow:1px 1px 4px rgba(0,0,0,0.7); 
+        }
+        h2 { 
+            font-size: clamp(40px, 3vw, 34px); 
+            margin:6px 0; 
+            text-shadow:1px 1px 4px rgba(0,0,0,0.7); 
+        }
+        p { 
+            text-shadow:1px 1px 4px rgba(0,0,0,0.7); 
+            max-width:760px; 
+        }
+        /* Buttons */
+        .btn { 
+          display:inline-block;
+          background:var(--accent);
+          color:#fff;
+          padding:12px 22px;
+          border-radius:10px;
+          text-decoration:none;
+          font-weight:700;
+          margin-top:18px 
+        }
+        .btn:hover{opacity:.95}
+
+        /* Center wrapper */
+        .center { 
+          display:flex;
+          flex-direction:column;
+          align-items:center;
+          justify-content:center;
+          gap:12px 
+        }
+
+        /* Founder box */
+        .founder-box{ 
+          width:360px;
+          background:#fff;
+          color:#000;
+          border-radius:14px;
+          padding:16px;
+          box-shadow:0 8px 20px rgba(0,0,0,0.4);
+        }
+        .founder-box img{
+          width:90%;
+          height:300px;
+          object-fit:cover;
+          border-radius:10px;
+          border:4px solid #f5f5f5;
+        }
+        .founder-box h3{ 
+          margin:10px 0 6px;
+        }
+
+        /* Product grid */
+        .product-grid{ 
+          display:flex;
+          flex-wrap:wrap;
+          justify-content:center;
+          gap:26px;
+          margin-top:24px; 
+        }
+        .product-card{ 
+          width:300px;
+          background:#fff;
+          color:#000;
+          border-radius:14px;
+          padding:12px;
+          box-shadow:0 8px 18px rgba(0,0,0,0.25);
+          text-align:center;
+        }
+        .product-card img{ 
+          width:100%; 
+          height:100px; 
+          object-fit:cover; 
+          border-radius:10px; 
+          border:3px solid #eee;
+        }
+        .product-card h4{ 
+          margin:10px 0 6px;
+          font-size:18px;
+        }
+        .product-card .price{ 
+          color:var(--accent); 
+          font-weight:800; 
+          font-size:17px;
+        }
+
+        /* Forms */
+        form.order-form{ 
+          background:rgba(255,255,255,0.95); 
+          color:#000; 
+          padding:18px; 
+          border-radius:12px; 
+          width:320px; 
+          box-shadow:0 8px 20px rgba(0,0,0,0.25) 
+        }
+        form.order-form input, 
+        form.order-form select{ 
+          width:100%; 
+          padding:10px;
+          margin-top:10px;
+          border-radius:8px;
+          border:1px solid #ccc;
+        }
+        form.order-form button{ 
+          margin-top:12px;
+          width:100%;
+          padding:12px;
+          background:var(--accent);
+          color:#fff;
+          border:none;
+          border-radius:8px;
+          font-weight:700;
+        }
+
+        /* Contact box */
+        .contact-box{ 
+          background:rgba(255,255,255,0.95); 
+          color:#000;
+          padding:18px;
+          border-radius:12px;
+          width:320px;
+          box-shadow:0 8px 20px rgba(0,0,0,0.25);
+        }
+        .contact-box input, 
+        .contact-box textarea{ 
+          width:100%;
+          padding:10px;
+          margin-top:10px;
+          border-radius:8px;
+          border:1px solid #ccc; 
+        }
+        .contact-box button{ 
+          margin-top:12px;
+          width:100%;
+          padding:12px;
+          background:var(--accent);
+          color:#fff;
+          border:none;
+          border-radius:8px;
+          font-weight:700;
+        }
+
+        
+        /* FOOTER */
+        footer {
+            background: #000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        footer p {
+            margin-top: 10px;
+        }
+    /* Responsive tweaks */
+        @media(max-width:700px){ .nav{gap:12px;padding:10px} header{position:sticky} .founder-box{width:88%} .product-card{width:46%} form.order-form, .contact-box{width:88%} }
+
+        @media(max-width:420px){ .product-card{width:100%} }
+
+        /* subtle focus outline for accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus{ outline:3px solid rgba(214,0,28,0.18); outline-offset:2px }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#order">Order</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <!-- HOME -->
+    <section id="home" style="background-image:url('Home.jpg'); min-height:78vh">
+        <div class="center"
+           <div style="border-radius:12px; padding:20px; max-width:400px; text-align:center;">
+            <a class="btn" href="#about">Learn More</a>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" style="background-image:url('about.jpg')">
+        <div class="center">
+            <h2 style="font-size:34px;margin:6px 0">Toyota Company's History'</h2>
+          <div style="background:rgba(0,0,0,0.55); backdrop-filter:blur(6px); border-radius:12px; padding:20px; max-width:400px; text-align:center;">
+        <p style="max-width:760px">Toyota's history began with inventor Sakichi Toyoda's automatic looms, leading his son Kiichiro Toyoda to found Toyota Motor Co., Ltd. in 1937, evolving from a division of Toyoda Automatic Loom Works into a global automotive giant known for quality, reliability (like the Corolla), and innovation (like the Prius hybrid). The name changed from "Toyoda" to "Toyota" for luck (8 strokes in Japanese) and branding, marking a transition from weaving machinery to mass-producing cars and trucks for a growing world.</p>     
+        <a class="btn" href="#about2">Next</a>
+        </div>
+    </section>
+
+    <section id="about2" style="background-image:url('about2.jpg')">
+        <div class="center">
+            <h1 style="font-size:34px;margin:6px 0">Founder</h1>
+
+            <div class="founder-box">
+                <img src="Founder.jpeg" alt="Koo In-Hwoi">
+                <h3>Kiichiro Toyoda</h3>
+                <p>The founder of Toyota Motor Corporation, who established the automotive division from his father Sakichi Toyoda's loom business in 1937, with the goal of producing mass-market automobiles.       
+                </div>
+            <div style="display:center; justify-content:space-between; margin-top:20px;">
+            <a class="btn" href="#about">Previous</a>
+            <a class="btn" href="#home">Back to Home</a>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" style="background-image:url('product.jpg')">
+        <div class="center">
+            <h2 style="font-size:34px;margin:6px 0">Products</h2>
+
+            <div class="product-grid" aria-live="polite">
+                <div class="product-card">
+                    <img src="Avalon.jpg" alt="LG OLED TV">
+                    <h4>Avalon Sedan</h4>
+                    <div class="price">₱4,200,000</div>
+                    <a class="btn" href="#order" style="margin-top:12px">Order</a>
+                </div>
+
+                <div class="product-card">
+                    <img src="XLE.jpg" alt="LG Refrigerator">
+                    <h4>C-HR XLE</h4>
+                    <div class="price">₱2,900,000</div>
+                    <a class="btn" href="#order" style="margin-top:12px">Order</a>
+                </div>
+
+                <div class="product-card">
+                    <img src="Carolla.jpg" alt="LG Washing Machine">
+                    <h4>Carolla iM Hatchback</h4>
+                    <div class="price">₱3,100,000</div>
+                    <a class="btn" href="#order" style="margin-top:12px">Order</a>
+                </div>
+
+                <div class="product-card">
+                    <img src="Tundra.jpg" alt="LG NanoCell">
+                    <h4>Tundra Truck</h4>
+                    <div class="price">₱5,600,000</div>
+                    <a class="btn" href="#order" style="margin-top:12px">Order</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ORDER -->
+    <section id="order" style="background-image:url('order.jpg')">
+        <div class="center">
+            <h2 style="font-size:34px;margin:6px 0">Place Your Order</h2>
+
+            <form class="order-form" onsubmit="event.preventDefault();showOrderConfirm()">
+                <input type="text" id="custName" placeholder="Full Name" required>
+                <input type="text" id="custAddr" placeholder="Address" required>
+                <select id="prodSelect" required>
+                    <option value="">Select Product</option>
+                    <option>Avalon Sedan - ₱4,200,000</option>
+                    <option>C-HR XLE - ₱2,900,000</option>
+                    <option>Carolla iM Hatchback - ₱3,100,000</option>
+                    <option>Tundra Truck - ₱5,600,000</option>
+                </select>
+                <button type="submit">Submit Order</button>
+            </form>
+
+            <div id="orderConfirm" style="display:none;margin-top:16px;background:rgba(0,0,0,0.55);padding:12px;border-radius:10px">✔ Your order has been placed!</div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" style="background-image:url('contact.jpg')">
+        <div class="center">
+            <h2 style="font-size:34px;margin:6px 0">Contact Us</h2>
+
+            <div class="contact-box">
+                <input id="cname" placeholder="Your Name" required>
+                <input id="cemail" type="email" placeholder="Your Email" required>
+                <textarea id="cmsg" rows="5" placeholder="Your Message"></textarea>
+                <button onclick="sendMessage()">Send Message</button>
+                <div id="msgConfirm" style="display:none;margin-top:10px;color:green">✔ Message sent (simulated)</div>
+            </div>
+        </div>
+    </section>
+        
+<footer>
+    <h3>Toyota Company Official Website</h3>
+    <p>Follow us on social media| © 2025 Toyota Company</p>
+</footer>
+        
+</body>
+</html>
